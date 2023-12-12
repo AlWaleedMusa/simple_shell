@@ -16,6 +16,29 @@ int exit_func(char *commands_array[], char *argv)
 }
 
 /**
+ * env_func - Prints the current environment variables to stdout.
+ * @commands_array: Array of command line arguments.
+ * @argv: argument to the program.
+ *
+ * Return: 0 on success.
+ */
+int env_func(char *commands_array[], char *argv)
+{
+	int i = 0;
+
+	(void)commands_array;
+	(void)argv;
+
+	while (environ[i])
+	{
+		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
+	}
+	exit(0);
+}
+
+/**
  * find_builtin - Searches an array of FuncInfo structs to find the
  * function pointer for the given command name.
  * @name: The name of the command to find.
