@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * handle_path - Searches the PATH environment variable to find the full path
+ * handle_path - Searches the PATH env variable to find the full path
  * for the executable file specified in commands_array[0].
  * @commands_array: Array containing command and arguments.
  *
- * Return: Pointer to full path string on success, commands_array[0] if not found,
+ * Return: Pointer to full path string on success,
+ * commands_array[0] if not found,
  * NULL on failure.
  */
 char *handle_path(char *commands_array[])

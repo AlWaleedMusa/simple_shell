@@ -17,8 +17,8 @@ typedef int (*FuncPtr)(char **, char *);
 
 struct FuncInfo
 {
-    char *name;
-    FuncPtr func;
+	char *name;
+	FuncPtr func;
 };
 
 char **tokenize(char *str);
