@@ -10,11 +10,15 @@
 #include <stddef.h>
 
 extern char **environ;
-/**
- * @FuncPtr: type for shell built-in commands.
- */
+
 typedef int (*FuncPtr)(char **, char *);
 
+/**
+ * struct FuncInfo - struct that define pointer to func details.
+ * @name: name of the function.
+ * @func: pointer to the function.
+ * Description: struct to help find the right function by name.
+ */
 struct FuncInfo
 {
 	char *name;
