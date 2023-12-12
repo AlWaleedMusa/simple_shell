@@ -91,3 +91,29 @@ FuncPtr find_builtin(char *name, struct FuncInfo *funcs, int num_funcs)
 	}
 	return (NULL);
 }
+
+/**
+ * builtin - Checks if the given command is a builtin, and if so calls
+ * the corresponding function.
+ * @commands_array: Array of command and arguments.
+ * @argv: argument to the program.
+ *
+ * Return: 0 if a builtin function was found and executed, -1 otherwise.
+ */
+int builtin(char *commands_array[], char *argv)
+{
+	struct FuncInfo funcs[] = {
+		{"exit", exit_func},
+		{"env", env_func},
+		{"cd", cd_func}};
+
+	int num_funcs = sizeof(funcs) / sizeof(struct FuncInfo);
+	FuncPtr func = find_builtin(commands_array[0], funcs, num_funcs);
+
+	if (func != NULL)
+	{
+		func(commands_array, argv);
+		return (0);
+	}
+	return (-1);
+}
