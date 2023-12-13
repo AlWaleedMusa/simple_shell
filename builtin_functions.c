@@ -9,9 +9,17 @@
  */
 int exit_func(char *commands_array[], char *argv)
 {
+	int i = 0;
+
 	(void)commands_array;
 	(void)argv;
 
+	while (commands_array[i] != NULL)
+	{
+		free(commands_array[i]);
+		i++;
+	}
+	free(commands_array);
 	exit(0);
 }
 

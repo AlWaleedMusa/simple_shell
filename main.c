@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 		commands_array = tokenize(BUFFER);
 		handle_command(commands_array, argv[0]);
-		while (commands_array[i])
+		while (commands_array[i] != NULL)
 		{
 			free(commands_array[i]);
 			i++;
