@@ -49,28 +49,32 @@ int env_func(char *commands_array[], char *argv)
 int cd_func(char *commands_array[], char *argv)
 {
 	char curr_cwd[1024];
+	int status = -1;
 
 	(void)argv;
 
 	if (commands_array[1] == NULL)
 	{
-		getcwd(curr_cwd, sizeof(curr_cwd));
-		setenv("OLDPWD", curr_cwd, 1);
-		chdir(my_getenv("HOME"));
-		setenv("PWD", my_getenv("HOME"), 1);
+		status = chdir(my_getenv("HOME"));
 	}
 	else if (_strcmp(commands_array[1], "-") == 0)
 	{
-		chdir(my_getenv("OLDPWD"));
-		getcwd(curr_cwd, sizeof(curr_cwd));
-		setenv("OLDPWD", my_getenv("PWD"), 1);
-		setenv("PWD", curr_cwd, 1);
+		status = chdir(my_getenv("OLDPWD"));
 	}
 	else
 	{
-		setenv("OLDPWD", my_getenv("PWD"), 1);
-		chdir(commands_array[1]);
+		status = chdir(commands_array[1]);
+	}
+
+	if (status == -1)
+	{
+		perror("Error");
+		return (-1);
+	}
+	else
+	{
 		getcwd(curr_cwd, sizeof(curr_cwd));
+		setenv("OLDPWD", my_getenv("PWD"), 1);
 		setenv("PWD", curr_cwd, 1);
 	}
 	return (0);
