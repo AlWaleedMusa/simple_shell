@@ -48,9 +48,15 @@ int env_func(char *commands_array[], char *argv)
  */
 int cd_func(char *commands_array[], char *argv)
 {
+	(void)argv;
+
 	if (commands_array[1] == NULL)
 	{
-		fprintf(stderr, "%s: expected argument to \"cd\"\n", argv);
+		chdir(my_getenv("HOME"));
+	}
+	else if (_strcmp(commands_array[1], "-") == 0)
+	{
+		chdir(my_getenv("OLDPWD"));
 	}
 	else
 	{
