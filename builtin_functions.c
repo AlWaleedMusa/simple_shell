@@ -126,13 +126,18 @@ int builtin(char *commands_array[], char *argv)
 		{"env", env_func},
 		{"cd", cd_func}};
 
+	int result;
 	int num_funcs = sizeof(funcs) / sizeof(struct FuncInfo);
 	FuncPtr func = find_builtin(commands_array[0], funcs, num_funcs);
 
 	if (func != NULL)
 	{
-		func(commands_array, argv);
-		return (0);
+		result = func(commands_array, argv);
+	if (result == -2)
+	{
+		return (-2);
+	}
+	return (0);
 	}
 	return (-1);
 }
