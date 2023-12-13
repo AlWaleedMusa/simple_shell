@@ -36,7 +36,7 @@ int env_func(char *commands_array[], char *argv)
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
-	exit(0);
+	return (0);
 }
 
 /**
@@ -48,22 +48,30 @@ int env_func(char *commands_array[], char *argv)
  */
 int cd_func(char *commands_array[], char *argv)
 {
+	char curr_cwd[1024];
+
 	(void)argv;
 
 	if (commands_array[1] == NULL)
 	{
+		getcwd(curr_cwd, sizeof(curr_cwd));
+		setenv("OLDPWD", curr_cwd, 1);
 		chdir(my_getenv("HOME"));
+		setenv("PWD", my_getenv("HOME"), 1);
 	}
 	else if (_strcmp(commands_array[1], "-") == 0)
 	{
 		chdir(my_getenv("OLDPWD"));
+		getcwd(curr_cwd, sizeof(curr_cwd));
+		setenv("OLDPWD", my_getenv("PWD"), 1);
+		setenv("PWD", curr_cwd, 1);
 	}
 	else
 	{
-		if (chdir(commands_array[1]) != 0)
-		{
-			perror("Error");
-		}
+		setenv("OLDPWD", my_getenv("PWD"), 1);
+		chdir(commands_array[1]);
+		getcwd(curr_cwd, sizeof(curr_cwd));
+		setenv("PWD", curr_cwd, 1);
 	}
 	return (0);
 }
