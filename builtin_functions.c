@@ -24,14 +24,16 @@ int exit_func(char *commands_array[], char *argv)
  */
 int env_func(char *commands_array[], char *argv)
 {
+	char **env = environ;
+	int len;
 	int i = 0;
 
 	(void)commands_array;
 	(void)argv;
-
-	while (environ[i])
+	while (env[i] != NULL)
 	{
-		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+		len = _strlen(env[i]);
+		write(STDOUT_FILENO, env[i], len);
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
