@@ -35,7 +35,7 @@ int env_func(char *commands_array[], char *argv)
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
-	exit(0);
+	return (0);
 }
 
 /**
