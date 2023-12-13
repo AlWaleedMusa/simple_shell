@@ -39,7 +39,7 @@ int env_func(char *commands_array[], char *argv)
 }
 
 /**
- *  cd_func - Changes the current working directory.
+ * cd_func - Changes the current working directory.
  * @commands_array: Array of command line arguments.
  * @argv: argument to the program.
  *
