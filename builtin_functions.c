@@ -9,10 +9,19 @@
  */
 int exit_func(char *commands_array[], char *argv)
 {
-	(void)commands_array;
+	int exit_code;
 	(void)argv;
 
-	free(commands_array);
+	if (commands_array[1])
+	{
+		exit_code = atoi(commands_array[1]);
+	if (exit_code == -1)
+	{
+	fprintf(stderr, "%s: %d: exit: Illegal number: %s\n", argv, __LINE__, commands_array[1]);
+			exit_code = 2;
+	}
+		exit(exit_code);
+	}
 	exit(0);
 }
 

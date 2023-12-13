@@ -9,7 +9,6 @@
  */
 int handle_command(char *commands_array[], char *argv)
 {
-	int result;
 
 	if (commands_array[0] == NULL)
 	{
