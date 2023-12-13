@@ -62,6 +62,23 @@ int cd_func(char *commands_array[], char *argv)
 }
 
 /**
+ * struct FuncInfo - struct that define pointer to func details.
+ * @name: name of the function.
+ * @func: pointer to the function.
+ * Description: struct to help find the right function by name.
+ */
+struct FuncInfo
+{
+	char *name;
+	FuncPtr func;
+};
+
+/**
+ * FuncPtr - typedef for the struct member func.
+ */
+typedef int (*FuncPtr)(char **, char *);
+
+/**
  * find_builtin - Searches an array of FuncInfo structs to find the
  * function pointer for the given command name.
  * @name: The name of the command to find.
