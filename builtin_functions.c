@@ -102,7 +102,7 @@ FuncPtr find_builtin(char *name, struct FuncInfo *funcs, int num_funcs)
  */
 int builtin(char *commands_array[], char *argv)
 {
-	struct FuncInfo funcs[] = {
+	funcinfo funcs[] = {
 		{"exit", exit_func},
 		{"env", env_func},
 		{"cd", cd_func}};

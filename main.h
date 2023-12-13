@@ -22,11 +22,11 @@ typedef int (*FuncPtr)(char **, char *);
  * @func: pointer to the function.
  * Description: name is name of the function.
  */
-struct FuncInfo
+typedef struct FuncInfo
 {
 	char *name;
 	FuncPtr func;
-};
+}funcinfo;
 
 char **tokenize(char *str);
 int handle_command(char *commands_array[], char *argv);
