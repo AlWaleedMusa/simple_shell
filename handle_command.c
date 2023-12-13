@@ -9,12 +9,19 @@
  */
 int handle_command(char *commands_array[], char *argv)
 {
+	int result;
+
 	if (commands_array[0] == NULL)
 	{
 		return (-1);
 	}
 
-	if (builtin(commands_array, argv) != 0)
+	result = builtin(commands_array, argv);
+	if (result == -2)
+	{
+		return (-2);
+	}
+	else if (result != 0)
 	{
 		execute_cmd(commands_array, argv);
 	}
