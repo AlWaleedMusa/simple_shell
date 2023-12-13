@@ -12,6 +12,11 @@
 extern char **environ;
 
 /**
+ * FuncPtr - typedef for the struct member func.
+ */
+typedef int (*FuncPtr)(char **, char *);
+
+/**
  * struct FuncInfo - struct that define pointer to func details.
  * @name: name of the function.
  * @func: pointer to the function.
@@ -22,11 +27,6 @@ struct FuncInfo
 	char *name;
 	FuncPtr func;
 };
-
-/**
- * FuncPtr - typedef for the struct member func.
- */
-typedef int (*FuncPtr)(char **, char *);
 
 char **tokenize(char *str);
 int handle_command(char *commands_array[], char *argv);
