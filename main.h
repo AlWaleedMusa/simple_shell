@@ -26,7 +26,7 @@ typedef struct FuncInfo
 {
 	char *name;
 	FuncPtr func;
-}funcinfo;
+} funcinfo;
 
 char **tokenize(char *str);
 int handle_command(char *commands_array[], char *argv);
