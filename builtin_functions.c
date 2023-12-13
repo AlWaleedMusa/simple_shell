@@ -12,7 +12,7 @@ int exit_func(char *commands_array[], char *argv)
 	(void)commands_array;
 	(void)argv;
 
-	free(command_array);
+	free(commands_array);
 	exit(0);
 }
 
