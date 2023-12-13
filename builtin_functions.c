@@ -44,7 +44,7 @@ int env_func(char *commands_array[], char *argv)
  * @argv: argument to the program.
  *
  * Return: Returns 0 on success, non-zero on failure.
- */
+ *
 int cd_func(char *commands_array[], char *argv)
 {
 	char curr_cwd[1024];
@@ -77,7 +77,7 @@ int cd_func(char *commands_array[], char *argv)
 		setenv("PWD", curr_cwd, 1);
 	}
 	return (0);
-}
+}*/
 
 /**
  * find_builtin - Searches an array of FuncInfo structs to find the
