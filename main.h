@@ -22,6 +22,10 @@ struct FuncInfo
 	char *name;
 	FuncPtr func;
 };
+
+/**
+ * FuncPtr - typedef for the struct member func.
+*/
 typedef int (*FuncPtr)(char **, char *);
 
 
